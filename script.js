@@ -1,62 +1,23 @@
-const lamps = document.querySelectorAll(".lamp");
-const inputs = document.querySelectorAll(".inputs");
-const valueSpans = document.querySelectorAll(".values");
-
-const placeholder = document.getElementById("placeholder");
-
-const colors = {
-  red: 255,
-  green: 255,
-  blue: 255,
-};
-
-inputs.forEach((input, i) => {
-  input.addEventListener("input", () => {
-    const value = input.value;
-    const color = input.dataset.color;
-
-    colors[color] = value;
-
-    valueSpans[i].textContent = value; // atualiza número na tela
-
-    updateColor();
-  });
-});
-
-const updateColor = () => {
-  lamps.forEach((lamp) => {
-    const color = lamp.dataset.color;
-
-    let r = 0,
-      g = 0,
-      b = 0;
-
-    if (color === "red") r = colors.red;
-    if (color === "green") g = colors.green;
-    if (color === "blue") b = colors.blue;
-
-    lamp.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
-  });
-
-  // cor combinada
-  placeholder.style.backgroundColor = `rgb(${colors.red}, ${colors.green}, ${colors.blue})`;
-};
+// Seleção dos elementos de input
 const slideR = document.getElementById("slideR");
 const slideG = document.getElementById("slideG");
 const slideB = document.getElementById("slideB");
 
+// Seleção dos elementos de exibição de valor
 const valR = document.getElementById("valR");
 const valG = document.getElementById("valG");
 const valB = document.getElementById("valB");
 
+// Preview e Texto Hex
 const preview = document.getElementById("color-preview");
 const hexValue = document.getElementById("hexValue");
 
+// Botões
 const btnBlack = document.getElementById("btnBlack");
 const btnWhite = document.getElementById("btnWhite");
 const btnRandom = document.getElementById("btnRandom");
 
-// Converte valor RGB para Hexadecimal
+// Função para converter decimal para Hexadecimal
 function rgbToHex(r, g, b) {
   const toHex = (c) => {
     const hex = parseInt(c).toString(16);
@@ -65,25 +26,25 @@ function rgbToHex(r, g, b) {
   return `#${toHex(r)}${toHex(g)}${toHex(b)}`.toUpperCase();
 }
 
-// Atualiza a cor e as informações na tela
+// Função principal de atualização
 function updateColor() {
   const r = slideR.value;
   const g = slideG.value;
   const b = slideB.value;
 
-  // Atualiza textos dos valores
+  // Atualiza os números ao lado das letras (R, G, B)
   valR.innerText = r;
   valG.innerText = g;
   valB.innerText = b;
 
-  // Aplica a cor de fundo
+  // Atualiza a cor do quadro de visualização
   preview.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
 
-  // Atualiza código hexadecimal
+  // Atualiza o código HEX no rodapé
   hexValue.innerText = rgbToHex(r, g, b);
 }
 
-// Define valores diretamente para os sliders
+// Função auxiliar para os botões de atalho
 function setRGB(r, g, b) {
   slideR.value = r;
   slideG.value = g;
@@ -91,12 +52,12 @@ function setRGB(r, g, b) {
   updateColor();
 }
 
-// Eventos para mudança de sliders
+// Ouvintes de eventos para os sliders
 slideR.addEventListener("input", updateColor);
 slideG.addEventListener("input", updateColor);
 slideB.addEventListener("input", updateColor);
 
-// Eventos dos botões de atalho
+// Ouvintes de eventos para os botões
 btnBlack.addEventListener("click", () => setRGB(0, 0, 0));
 btnWhite.addEventListener("click", () => setRGB(255, 255, 255));
 btnRandom.addEventListener("click", () => {
@@ -106,5 +67,5 @@ btnRandom.addEventListener("click", () => {
   setRGB(r, g, b);
 });
 
-// Inicializa a cor como preto
+// Inicialização (começa em preto conforme seu HTML)
 updateColor();
