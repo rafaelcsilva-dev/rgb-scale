@@ -18,7 +18,8 @@ body {
   background: #000;
   box-shadow: 0 0 20px rgba(0, 255, 65, 0.1);
   position: relative;
-  width: 450px;
+  width: 100%;
+  max-width: 400px;
   box-sizing: border-box;
 }
 
