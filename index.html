@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RGB Scale</title>
+  </head>
+  <body>
+    <div class="container">
+      <h1>RGB Scale v1.0</h1>
+
+      <div id="color-preview"></div>
+
+      <div class="slider-group">
+        <div class="slider-label red">
+          <span>R (Vermelho)</span>
+          <span id="valR">0</span>
+        </div>
+        <input type="range" id="slideR" min="0" max="255" value="0" />
+      </div>
+
+      <div class="slider-group">
+        <div class="slider-label green">
+          <span>G (Verde)</span>
+          <span id="valG">0</span>
+        </div>
+        <input type="range" id="slideG" min="0" max="255" value="0" />
+      </div>
+
+      <div class="slider-group">
+        <div class="slider-label blue">
+          <span>B (Azul)</span>
+          <span id="valB">0</span>
+        </div>
+        <input type="range" id="slideB" min="0" max="255" value="0" />
+      </div>
+
+      <div class="presets">
+        <button id="btnBlack">Preto</button>
+        <button id="btnWhite">Branco</button>
+        <button id="btnRandom">Aleatório</button>
+      </div>
+
+      <div class="stats">
+        <div class="stat-line">
+          <span>HEX Code:</span>
+          <span id="hexValue" class="highlight">#000000</span>
+        </div>
+        <div class="stat-line">
+          <span>Probabilidade de Sorteio:</span>
+          <span class="highlight">1 em 16.777.216</span>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

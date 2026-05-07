@@ -1,0 +1,153 @@
+body {
+  background-color: #0a0a0a;
+  color: #00ff41;
+  font-family: "Courier New", Courier, monospace;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  margin: 0;
+  overflow: hidden;
+}
+
+.container {
+  text-align: center;
+  border: 1px solid #333;
+  padding: 30px;
+  background: #000;
+  box-shadow: 0 0 20px rgba(0, 255, 65, 0.1);
+  position: relative;
+  width: 450px;
+  box-sizing: border-box;
+}
+
+h1 {
+  font-size: 1.2rem;
+  letter-spacing: 3px;
+  margin-bottom: 25px;
+  text-transform: uppercase;
+  border-bottom: 1px solid #333;
+  padding-bottom: 10px;
+}
+
+/* Área de visualização da cor resultante */
+#color-preview {
+  width: 100%;
+  height: 150px;
+  border: 2px solid #222;
+  margin-bottom: 25px;
+  background-color: rgb(0, 0, 0);
+  transition: background-color 0.1s ease;
+  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.8);
+}
+
+/* Sliders de controle */
+.slider-group {
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+.slider-label {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+  margin-bottom: 5px;
+}
+
+.slider-label.red {
+  color: #ff4141;
+}
+.slider-label.green {
+  color: #00ff41;
+}
+.slider-label.blue {
+  color: #4141ff;
+}
+
+input[type="range"] {
+  width: 100%;
+  -webkit-appearance: none;
+  background: #111;
+  height: 8px;
+  border: 1px solid #333;
+  outline: none;
+}
+
+/* Customização dos sliders para combinar com o terminal */
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 15px;
+  height: 15px;
+  background: #00ff41;
+  cursor: pointer;
+  border: 1px solid #000;
+}
+
+input[type="range"]::-moz-range-thumb {
+  width: 15px;
+  height: 15px;
+  background: #00ff41;
+  cursor: pointer;
+  border: 1px solid #000;
+}
+
+/* Botões rápidos */
+.presets {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 10px;
+  margin: 25px 0 20px 0;
+}
+
+button {
+  background: transparent;
+  color: #00ff41;
+  border: 1px solid #00ff41;
+  padding: 8px 15px;
+  font-family: inherit;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-transform: uppercase;
+}
+
+button:hover {
+  background: #00ff41;
+  color: #000;
+  box-shadow: 0 0 10px #00ff41;
+}
+
+.stats {
+  margin-top: 20px;
+  font-size: 0.8rem;
+  color: #666;
+  text-align: left;
+  border-top: 1px solid #222;
+  padding-top: 15px;
+}
+
+.stat-line {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+
+.highlight {
+  color: #fff;
+}
+
+/* Efeito scanline */
+.container::after {
+  content: " ";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%);
+  background-size: 100% 4px;
+  z-index: 10;
+  pointer-events: none;
+}
