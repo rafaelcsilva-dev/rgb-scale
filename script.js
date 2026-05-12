@@ -26,6 +26,27 @@ function rgbToHex(r, g, b) {
   return `#${toHex(r)}${toHex(g)}${toHex(b)}`.toUpperCase();
 }
 
+function copyHexValue() {
+  // Capturamos o texto que está sendo exibido no momento do clique
+  const textoParaCopiar = hexValue.innerText;
+
+  // Executamos a cópia
+  navigator.clipboard.writeText(textoParaCopiar)
+    .then(() => {
+      // Feedback visual elegante: muda o texto temporariamente
+      const textoOriginal = hexValue.innerText;
+      hexValue.innerText = "Copiado!";
+      
+      // Volta para o código HEX após 1 segundo
+      setTimeout(() => {
+        hexValue.innerText = textoOriginal;
+      }, 500);
+    })
+    .catch((err) => {
+      console.error("Erro ao copiar", err);
+    });
+}
+
 // Função principal de atualização
 function updateColor() {
   const r = slideR.value;
@@ -66,6 +87,7 @@ btnRandom.addEventListener("click", () => {
   const b = Math.floor(Math.random() * 256);
   setRGB(r, g, b);
 });
+hexValue.addEventListener("click", copyHexValue);
 
 // Inicialização (começa em preto conforme seu HTML)
 updateColor();
